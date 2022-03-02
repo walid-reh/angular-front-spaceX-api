@@ -1,2 +1,2 @@
-# angular-front-spaceX-api
-A frontend application using Angular with Space X API
+# vuejs-front-spaceX-api
+A frontend application using Vuejs with Space X API
