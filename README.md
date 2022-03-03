@@ -13,5 +13,11 @@
 - This project was initialized using docker via the following commands:
 
   docker-compose run vue vue create .
-  
-  docker-compose up --build
+
+- Use the following command to add vuetify plugins
+
+docker-compose run vue vue add vuetify
+
+- Launch the application
+
+docker-compose up --build
