@@ -6,55 +6,45 @@
       dark
     >
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        <h2>SpaceX Projet Launches</h2>
       </div>
 
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <v-container>
+        <v-timeline v-if="launches.length >0">
+          <LaunchesItem v-for="launch in launches" :key="launch.flight_number" :launch="launch" />
+        </v-timeline>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
+import axios from 'axios';
+import LaunchesItem from './components/LaunchesItem'
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    LaunchesItem
   },
 
   data: () => ({
-    //
+    launches: []
   }),
+  async created() {
+    const {data} = await axios.get('https://api.spacexdata.com/v3/launches')
+
+    data.forEach(launch =>{
+      this.launches.push(launch);
+    });
+
+
+    console.log(this.launches)
+  }
 };
+
 </script>
