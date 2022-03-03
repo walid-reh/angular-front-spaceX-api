@@ -11,5 +11,6 @@
 # Initialisation of project
 
 - This project was initialized using docker via the following commands:
+
   docker-compose run vue vue create .
   docker-compose up --build
