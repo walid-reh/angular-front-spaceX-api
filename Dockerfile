@@ -16,7 +16,7 @@ RUN npm install -g @vue/cli
 # Open the port 8080 for container
 EXPOSE 8080
 
-# Run the vuejs application
 RUN npm install
 
+# Run the vuejs application
 CMD ["npm", "run", "serve"]
