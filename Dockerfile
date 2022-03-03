@@ -16,6 +16,13 @@ RUN npm install
 # Install vue CLI
 RUN npm install -g @vue/cli
 
+# Add vuetify library
+RUN vue add vuetify
+
+# Axios to make request to API
+# Moment to format dates
+RUN npm i axios moment
+
 # Open the port 8080 for container
 EXPOSE 8080
 
