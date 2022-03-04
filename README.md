@@ -1,6 +1,9 @@
 # vuejs-front-spaceX-api
 
-- A frontend application using Vuejs with Space X API
+## About the Project
+
+- A frontend application using VueJs with Space X API.
+- The application use the Space X API to fetch data about capsules and launches.
 
 ## Authors of the project
 
@@ -8,7 +11,23 @@
 - Amer CHERNI
 - Walid REHIOUI
 
-# Initialisation of project
+### Dependencies and prerequisites
+
+- [Docker](https://www.docker.com/)
+
+### Used image
+
+- [node](https://hub.docker.com/_/node)
+
+### Commands to launching the application
+
+- If first time to start application:
+  docker-compose up --build
+  (please make sure to choose the version 2 of VueJs which is compatible with used vuetify library)
+- else:
+  docker-compose up
+
+### How the project was initialised
 
 - This project was initialized using docker via the following commands:
 
@@ -18,6 +37,6 @@
 
 docker-compose run vue vue add vuetify
 
-- Launch the application
+- Launch the application and build dependencies
 
 docker-compose up --build

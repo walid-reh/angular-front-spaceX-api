@@ -1,13 +1,8 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
-        <!-- <h2>SpaceX Projet Launches</h2> -->
-        <h2>SpaceX Capsules</h2>
+        <h2>Frontend app with SpaceX API to display launches and capsules</h2>
       </div>
 
       <v-spacer></v-spacer>
@@ -15,11 +10,48 @@
 
     <v-main>
       <v-container>
-        <!-- <v-timeline v-if="launches.length >0">
-          <LaunchesItem v-for="launch in launches" :key="launch.flight_number" :launch="launch" />
-        </v-timeline> -->
-        <v-timeline v-if="capsules.length >0">
-          <CapsuleItem v-for="capsule in capsules" :key="capsule.missions.flight" :capsule="capsule" />
+        <v-tabs>
+          <v-tab
+            @click="
+              Launches = true;
+              Capsules = false;
+              About = false;
+            "
+            >Launches</v-tab
+          >
+          <v-tab
+            @click="
+              Capsules = true;
+              Launches = false;
+              About = false;
+            "
+            >Capsules</v-tab
+          >
+          <v-tab
+            @click="
+              Capsules = false;
+              Launches = false;
+              About = true;
+            "
+            >About</v-tab
+          >
+        </v-tabs>
+        <div id="app" v-if="About">
+          <AboutPage msg="Welcome to Your Vue.js App" />
+        </div>
+        <v-timeline v-if="launches.length > 0 && Launches">
+          <LaunchesItem
+            v-for="launch in launches"
+            :key="launch.flight_number"
+            :launch="launch"
+          />
+        </v-timeline>
+        <v-timeline v-if="capsules.length > 0 && Capsules">
+          <CapsuleItem
+            v-for="capsule in capsules"
+            :key="capsule.missions.flight"
+            :capsule="capsule"
+          />
         </v-timeline>
       </v-container>
     </v-main>
@@ -27,43 +59,44 @@
 </template>
 
 <script>
-import axios from 'axios';
-//import LaunchesItem from './components/LaunchesItem'
-import CapsuleItem from './components/CapsuleItem'
+import axios from "axios";
+import LaunchesItem from "./components/LaunchesItem";
+import CapsuleItem from "./components/CapsuleItem";
+import AboutPage from "./components/AboutPage";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-    //LaunchesItem
-    CapsuleItem
+    LaunchesItem,
+    CapsuleItem,
+    AboutPage,
   },
 
   data: () => ({
-    //launches: []
-    capsules: []
+    launches: [],
+    capsules: [],
+    Launches: true,
+    Capsules: false,
+    About: false,
   }),
-  /*async created() {
-    const {data} = await axios.get('https://api.spacexdata.com/v3/launches')
 
-    data.forEach(launch =>{
+  async created() {
+    const { data } = await axios.get("https://api.spacexdata.com/v3/launches");
+
+    data.forEach((launch) => {
       this.launches.push(launch);
     });
 
+    console.log(this.launches);
+  },
 
-    console.log(this.launches)
-  }*/
-
-  async created() {
-    const {data} = await axios.get('https://api.spacexdata.com/v3/capsules')
-
-    data.forEach(capsule =>{
+  async updated() {
+    const { data } = await axios.get("https://api.spacexdata.com/v3/capsules");
+    data.forEach((capsule) => {
       this.capsules.push(capsule);
     });
-
-
-    console.log(this.capsules)
-  }
-}
-
+    console.log(this.capsules);
+  },
+};
 </script>

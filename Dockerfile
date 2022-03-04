@@ -13,10 +13,10 @@ COPY app/package.json ./
 # install with npm
 RUN npm install
 
-# Install vue CLI
+# Install vue CLI( please make sure to choose the version 2 of VueJs which is compatible with vuetify library)
 RUN npm install -g @vue/cli
 
-# Add vuetify library
+# Add vuetify library 
 RUN vue add vuetify
 
 # Axios to make request to API
