@@ -33,10 +33,13 @@
             :launch="launch"
           />
         </v-timeline>
-        <div id="app" v-if="Capsules">
-          <img alt="Vue logo" src="./assets/logo.png" />
-          <HelloWorld msg="Welcome to Your Vue.js App" />
-        </div>
+        <v-timeline v-if="capsules.length > 0 && Capsules">
+          <CapsuleItem
+            v-for="capsule in capsules"
+            :key="capsule.missions.flight"
+            :capsule="capsule"
+          />
+        </v-timeline>
       </v-container>
     </v-main>
   </v-app>
@@ -45,29 +48,43 @@
 <script>
 import axios from "axios";
 import LaunchesItem from "./components/LaunchesItem";
-import HelloWorld from "./components/HelloWorld";
+import CapsuleItem from "./components/CapsuleItem";
+
 export default {
   name: "App",
 
   components: {
     LaunchesItem,
-    HelloWorld,
+    CapsuleItem,
   },
 
   data: () => ({
     launches: [],
+    capsules: [],
     Launches: true,
     Capsules: false,
   }),
 
   async created() {
-    const { data } = await axios.get("https://api.spacexdata.com/v3/launches");
+    if (this.Launches) {
+      const { data } = await axios.get(
+        "https://api.spacexdata.com/v3/launches"
+      );
 
-    data.forEach((launch) => {
-      this.launches.push(launch);
-    });
+      data.forEach((launch) => {
+        this.launches.push(launch);
+      });
 
-    console.log(this.launches);
+      console.log(this.launches);
+    } else {
+      const { data } = await axios.get(
+        "https://api.spacexdata.com/v3/capsules"
+      );
+      data.forEach((capsule) => {
+        this.capsules.push(capsule);
+      });
+      console.log(this.capsules);
+    }
   },
 };
 </script>
