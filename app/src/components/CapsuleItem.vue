@@ -27,7 +27,7 @@ export default{
     props: ["capsule"],
     computed: {
         capsuleDate() {
-          // We retrive the date of the capsule launch in American format and we modify it to display in European format
+          // We retrieve the date of the capsule launch in American format and we modify it to display in European format
             return moment(this.capsule.original_launch).format("DD/MM/YYYY");
         }
     }
