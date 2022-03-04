@@ -76,9 +76,9 @@ export default {
   data: () => ({
     launches: [],
     capsules: [],
-    Launches: true,
-    Capsules: false,
-    About: false,
+    Launches: true, //boolean to check if Launches tab is selected
+    Capsules: false, //boolean to check if Capsules tab is selected
+    About: false, //boolean to check if Aboutpage tab is selected
   }),
 
   async created() {
