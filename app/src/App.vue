@@ -13,7 +13,7 @@
         <v-tabs>
           <v-tab
             @click="
-              Launches = true;  // To display the Launches Vue with the Tab onClick
+              Launches = true;
               Capsules = false;
               About = false;
             "
@@ -21,7 +21,7 @@
           >
           <v-tab
             @click="
-              Capsules = true; // To display the Capsules Vue with the Tab onClick
+              Capsules = true;
               Launches = false;
               About = false;
             "
@@ -31,7 +31,7 @@
             @click="
               Capsules = false;
               Launches = false;
-              About = true;  // To display the Launches Vue with the Tab onClick
+              About = true;
             "
             >About</v-tab
           >
@@ -73,7 +73,8 @@ import AboutPage from "./components/AboutPage";
 export default {
   name: "App",
 
-  components: {   // Here we can find the component from the folder components
+  components: {
+    // Here we can find the component from the folder components
     LaunchesItem,
     CapsuleItem,
     AboutPage,
