@@ -1,19 +1,25 @@
 <template>
-<v-timeline-item large>
-      <template v-slot:icon>
-        <v-avatar>
-          <img :src="launch.links.mission_patch_small">
-        </v-avatar>
-      </template>
-      <template v-slot:opposite>
-        <span>{{launchDate}}</span>
-      </template>
-      <v-card class="elevation-2">
-        <v-card-title class="text-h5">MISSION: {{launch.mission_name}}</v-card-title>
-        <v-card-subtitle>ROCKET: {{launch.rocket.rocket_name}}</v-card-subtitle>
-        <v-card-text>{{launch.details}}</v-card-text>
-      </v-card>
-    </v-timeline-item>
+<v-timeline-item
+          color="blue"
+          small
+        >
+          <v-row class="pt-1">
+            <v-col cols="3">
+              <strong>{{launchDate}}</strong>
+            </v-col>
+            <v-col>
+              <v-col-title class="text-h5">Mission name: {{launch.mission_name}}</v-col-title><br>
+              <v-col-title class="text-h5">Patch: </v-col-title>
+              <v-avatar>
+                <img :src="launch.links.mission_patch_small">
+              </v-avatar><br>
+              <v-col-subtitle> <b>Launch site:</b> {{launch.launch_site.site_name_long}}</v-col-subtitle><br>
+              <v-col-subtitle><b>Success:</b> {{launch.launch_success}}</v-col-subtitle><br>
+              <v-col-subtitle><b>Rocket:</b> {{launch.rocket.rocket_name}}</v-col-subtitle><br>
+              <v-col-text>{{launch.details}}</v-col-text>
+            </v-col>
+          </v-row>
+        </v-timeline-item>
 </template>
 
 <script> 
