@@ -48,4 +48,4 @@ docker-compose up --build
 
 ### Versioning
 
-This project uses [Semantic Versioning](http://semver.org/). For a list of available versions, see the [repository tag list](https://github.com/your/project/tags).
+This project uses [Semantic Versioning](http://semver.org/). For a list of available versions, see the [repository tag list](https://github.com/walid-reh/vuejs-front-spaceX-api/tags).
