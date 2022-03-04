@@ -40,3 +40,12 @@ docker-compose run vue vue add vuetify
 - Launch the application and build dependencies
 
 docker-compose up --build
+
+
+### Usage
+
+- Access to localhost with port 8080 : http://localhost:8080 
+
+### Versioning
+
+This project uses [Semantic Versioning](http://semver.org/). For a list of available versions, see the [repository tag list](https://github.com/your/project/tags).
